@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home/login', [UserController::class, 'index'])->name('login');
+Route::post('/home/user-login', [UserController::class, 'userLogin'])->name('userLogin');
+Route::get('/home/registration', [UserController::class, 'registration'])->name('registration');
+Route::post('/home/user-registration', [UserController::class, 'userRegistration'])->name('userRegistration');
+Route::get('/home/user-signout', [UserController::class, 'signout'])->name('signout');
+
+
+Route::resource('/home', DestinationController::class)->middleware('auth');
+
+Route::resource('/home/comments', CommentController::class)->middleware('auth');
+

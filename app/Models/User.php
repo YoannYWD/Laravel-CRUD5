@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    //Cardinalité
+    public function destinations() {
+        return $this->hasMany(Destination::class);
+    }
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
+
 }
