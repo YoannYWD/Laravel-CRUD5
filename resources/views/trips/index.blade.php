@@ -20,12 +20,14 @@
                             <input type="hidden" value="{{$destination->id}}" name="id">
                             <button type="submit" class="btn btn-primary mb-2">Commenter</button>
                         </form>
+                        @if($destination->user_id == auth()->id())
                         <form action="" method="POST">
-                            <a href="" class="btn btn-primary mb-2">Editer</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</a>
-                        </form>
+                                <a href="" class="btn btn-primary">Editer</a>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Supprimer</a>
+                            </form>
+                        @endif
                     </div>
                 </div>
             </div>

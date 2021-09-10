@@ -17,7 +17,9 @@ class CommentController extends Controller
                         ->get();
         $comments = DB::table('comments')
                         ->join('users', 'comments.user_id', '=', 'users.id')
+                        ->join('destinations', 'destinations.id', '=', 'comments.destination_id')
                         ->select('comments.id', 'comments.text', 'comments.created_at', 'users.name as user')
+                        ->where('comments.destination_id', '=', $id)
                         ->get();
         return view('comments/create', compact('destination', 'comments'));
     }

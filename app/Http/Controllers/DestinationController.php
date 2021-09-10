@@ -11,7 +11,7 @@ class DestinationController extends Controller
     public function index() {
         $destinations = DB::table('destinations')
         ->join('users', 'destinations.user_id', '=', 'users.id')
-        ->select('destinations.id', 'destinations.place', 'destinations.text', 'destinations.image', 'users.name as user')
+        ->select('destinations.id', 'destinations.place', 'destinations.text', 'destinations.image', 'destinations.user_id', 'users.name as user')
         ->get();
         return view('trips/index', compact('destinations'));
     }

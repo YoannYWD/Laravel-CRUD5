@@ -16,14 +16,12 @@
         </div>
     </div>
     <div class="row">
-
-            @foreach($comments as $comment)
+        @foreach($comments as $comment)
             <div class="col-6 offset-3 mb-3">
-            <p>{{$comment->text}}</p>
-            <p><i>Posté par {{$comment->user}} le {{$comment->created_at}}</i></p>
+                <p>{{$comment->text}}</p>
+                <p><i>Posté par {{$comment->user}} le {{$comment->created_at}}</i></p>
             </div>
-            @endforeach
-
+        @endforeach
     </div>
 </div>
 
